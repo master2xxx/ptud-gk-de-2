@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Đăng ký tài khoản</h2>
+        
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            {{ form|crispy }}
+            
+            <div class="flex flex-col space-y-4">
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Đăng ký
+                </button>
+                
+                <div class="text-center text-sm text-gray-600">
+                    Đã có tài khoản? 
+                    <a href="{% url 'users:login' %}" class="text-blue-500 hover:text-blue-600">
+                        Đăng nhập
+                    </a>
+                </div>
+            </div>
+        </form>
+        
+        {% if messages %}
+        <div class="mt-4">
+            {% for message in messages %}
+            <div class="p-4 {% if message.tags == 'error' %}bg-red-100 text-red-700{% else %}bg-green-100 text-green-700{% endif %} rounded">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %} 

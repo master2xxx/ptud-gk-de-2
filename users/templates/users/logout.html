@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Đã đăng xuất</h2>
+        <div class="text-center">
+            <p class="text-gray-600 mb-4">Bạn đã đăng xuất thành công.</p>
+            <a href="{% url 'users:login' %}" 
+               class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors duration-200">
+                Đăng nhập lại
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %} 
